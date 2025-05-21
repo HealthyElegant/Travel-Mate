@@ -390,6 +390,14 @@
 
     <!-- Image description related strings -->
     <string name="description_timezone_flag">Timezone flag</string>
+    <string name="trip_diary">Trip Diary</string>
+    <string name="add_entry">Add Entry</string>
+    <string name="export_pdf">Export PDF</string>
+    <string name="select_image">Select Image</string>
+    <string name="add_review">Add Review</string>
+    <string name="no_entries">No diary entries</string>
+    <string name="pdf_saved">PDF saved at %1$s</string>
+    <string name="error_pdf">Error creating PDF</string>
 
     <!-- Date / time formatting related strings -->
     <string name="date_format_hours_12">hh:mm:ss a</string>

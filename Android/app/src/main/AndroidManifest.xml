@@ -166,6 +166,7 @@
         <activity
             android:name=".destinations.description.RestaurantDetailsActivity"
             android:theme="@style/AppThemeNoBar" />
+        <activity android:name=".tripdiary.TripDiaryActivity" />
 
         <receiver android:name="widget.CheckListWidgetProvider">
             <intent-filter>

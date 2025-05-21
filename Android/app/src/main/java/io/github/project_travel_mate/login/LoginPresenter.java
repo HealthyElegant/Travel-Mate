@@ -188,7 +188,13 @@ class LoginPresenter {
      * @param email user's email address
      */
     public void ok_password_reset_request(String email, Handler mHandler) {
-        //TODO validate email address, verify if it's a registered user, send 4- digit otp to email
+        // Validate the email before triggering the API call
+        if (email == null || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            mHandler.post(() -> mView.showMessage("Invalid email"));
+            return;
+        }
+
+        //Send 4 digit OTP to email address
         mHandler.post(() -> mView.showLoadingDialog());
         String uri = API_LINK_V2 + "forgot-password-email-code/" + email;
         //Set up client
@@ -254,7 +260,13 @@ class LoginPresenter {
      * @param newPassword new password
      */
     public void ok_password_reset(String email, String code, String newPassword, Handler mHandler) {
-        //TODO update the password for the corresponding email address
+        // Validate password before sending request
+        if (newPassword == null || newPassword.length() < 8) {
+            mHandler.post(() -> mView.showMessage("Password must be at least 8 characters"));
+            return;
+        }
+
+        // Update the password for the corresponding email address
         mHandler.post(() -> mView.showLoadingDialog());
         String uri = API_LINK_V2 + "forgot-password-verify-code/" + email
                 + "/" + code + "/" + newPassword;

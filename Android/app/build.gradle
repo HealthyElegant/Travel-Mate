@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply from: '../config/checkstyle.gradle'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -79,6 +80,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+    kapt "android.arch.persistence.room:compiler:$rootProject.roomVersion"
     implementation 'com.github.juanlabrador:badgecounter:1.0.2@aar'
     // Cloudinary : For profile photo upload
     implementation 'com.cloudinary:cloudinary-android:1.24.0'

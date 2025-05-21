@@ -32,17 +32,17 @@ public class SplashActivity extends AppCompatActivity {
         pathView.useNaturalColors();
         pathView.setFillAfter(true);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Intent i;
-        if (mSharedPreferences.getString(USER_TOKEN, null) != null) {
-            i = MainActivity.getStartIntent(SplashActivity.this);
-        } else {
-            i = LoginActivity.getStartIntent(SplashActivity.this);
-        }
 
-        // TODO :: check for the user_token here & redirect to corresponding class
+        // Check for the user_token here & redirect to corresponding class
         // If token is null -> LoginActivity, else MainActivity
         new Handler().postDelayed(() -> {
-            startActivity(i);
+            Intent intent;
+            if (mSharedPreferences.getString(USER_TOKEN, null) != null) {
+                intent = MainActivity.getStartIntent(SplashActivity.this);
+            } else {
+                intent = LoginActivity.getStartIntent(SplashActivity.this);
+            }
+            startActivity(intent);
             finish();
         }, 2000);
     }

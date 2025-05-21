@@ -3,6 +3,10 @@ apply from: '../config/checkstyle.gradle'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+def cloudinaryCloudName = System.getenv('CLOUDINARY_CLOUD_NAME') ?: ''
+def cloudinaryApiKey = System.getenv('CLOUDINARY_API_KEY') ?: ''
+def cloudinaryApiSecret = System.getenv('CLOUDINARY_API_SECRET') ?: ''
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -11,6 +15,9 @@ android {
         targetSdkVersion 28
         versionCode 49
         versionName "5.6.2"
+        buildConfigField "String", "CLOUDINARY_CLOUD_NAME", "\"${cloudinaryCloudName}\""
+        buildConfigField "String", "CLOUDINARY_API_KEY", "\"${cloudinaryApiKey}\""
+        buildConfigField "String", "CLOUDINARY_API_SECRET", "\"${cloudinaryApiSecret}\""
     }
 
     lintOptions {

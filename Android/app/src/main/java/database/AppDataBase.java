@@ -10,14 +10,17 @@ import android.content.Context;
 
 import dao.CityDao;
 import dao.WidgetCheckListDao;
+import dao.ItineraryDao;
 import objects.ChecklistItem;
 import objects.City;
+import objects.Itinerary;
+import objects.ItineraryItem;
 
 /**
  * Created by Santosh on 05/09/18.
  */
 
-@Database(entities = {City.class, ChecklistItem.class}, version = 3, exportSchema = false)
+@Database(entities = {City.class, ChecklistItem.class, Itinerary.class, ItineraryItem.class}, version = 4, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDataBase extends RoomDatabase {
 
@@ -26,6 +29,7 @@ public abstract class AppDataBase extends RoomDatabase {
 
     public abstract CityDao cityDao();
     public abstract WidgetCheckListDao widgetCheckListDao();
+    public abstract ItineraryDao itineraryDao();
 
     public static AppDataBase getAppDatabase(Context context) {
         if (instance == null) {
@@ -33,7 +37,7 @@ public abstract class AppDataBase extends RoomDatabase {
                     AppDataBase.class,
                     "city-travel-mate-db")
                     .allowMainThreadQueries()
-                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                     .build();
         }
         return instance;
@@ -45,6 +49,15 @@ public abstract class AppDataBase extends RoomDatabase {
         public void migrate(SupportSQLiteDatabase database) {
             // Add column to the table
             database.execSQL("ALTER TABLE city ADD city_favourite INTEGER DEFAULT 0 NOT NULL");
+        }
+    };
+
+    //migration from database version 3 to 4
+    static final Migration MIGRATION_3_4 = new Migration(3, 4) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS itineraries (itinerary_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, user_id TEXT NOT NULL, name TEXT NOT NULL, days INTEGER NOT NULL)");
+            database.execSQL("CREATE TABLE IF NOT EXISTS itinerary_items (item_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, itinerary_id INTEGER NOT NULL, day INTEGER NOT NULL, activity TEXT NOT NULL, position INTEGER NOT NULL)");
         }
     };
 

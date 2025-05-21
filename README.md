@@ -61,8 +61,20 @@ features, **Pro** users gain itinerary generation and chat support, while
 ### Contributing
 Check out the [Getting Started](GETTING_STARTED.md) page to add an awesome new feature or bash some bugs. If you're new to open-source, we recommend you to checkout our [Contributing Guidelines](CONTRIBUTING.md). 
 
-Feel free to fork the project and send us a pull request or even open a [new issue](https://github.com/project-travel-mate/Travel-Mate/issues/new) to start discussion. 
+Feel free to fork the project and send us a pull request or even open a [new issue](https://github.com/project-travel-mate/Travel-Mate/issues/new) to start discussion.
 
+## Recommendation API
+
+This repository also provides a simple demo API that recommends destinations
+and activities based on a user's mood and interests. Run it locally:
+
+```bash
+python3 api/destination_matcher_api.py
+```
+
+Send a POST request to `/recommendations` with JSON data containing
+`preferences` and `mood`. The API returns matching destinations, related
+activities and highlights hidden gems.
 
 ## Stargazers over time
 

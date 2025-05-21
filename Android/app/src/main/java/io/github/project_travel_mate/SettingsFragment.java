@@ -23,6 +23,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.dd.processbutton.iml.ActionProcessButton;
@@ -43,6 +46,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import utils.TravelmateSnackbars;
+import utils.LocaleHelper;
+import utils.Constants;
 
 import static utils.Constants.API_LINK_V2;
 import static utils.Constants.QUOTES_SHOW_DAILY;
@@ -55,6 +60,8 @@ public class SettingsFragment extends Fragment {
     Switch notificationSwitch;
     @BindView(R.id.switch_quotes)
     Switch quoteSwitch;
+    @BindView(R.id.language_spinner)
+    android.widget.Spinner languageSpinner;
     @BindView(R.id.old_password)
     EditText oldPasswordText;
     @BindView(R.id.new_password)
@@ -144,7 +151,67 @@ public class SettingsFragment extends Fragment {
                 mSharedPreferences.edit().putBoolean(QUOTES_SHOW_DAILY, false).apply();
             }
         });
+
+        setupLanguageSpinner();
         return mView;
+    }
+
+    private void setupLanguageSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mActivity,
+                R.array.language_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        languageSpinner.setAdapter(adapter);
+        String current = mSharedPreferences.getString(Constants.APP_LANGUAGE, "en");
+        int pos = getLanguagePosition(current);
+        languageSpinner.setSelection(pos);
+        languageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String code = getLanguageCode(position);
+                if (!code.equals(current)) {
+                    mSharedPreferences.edit().putString(Constants.APP_LANGUAGE, code).apply();
+                    LocaleHelper.setLocale(mActivity, code);
+                    mActivity.recreate();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
+    }
+
+    private int getLanguagePosition(String code) {
+        switch (code) {
+            case "ru":
+                return 1;
+            case "de":
+                return 2;
+            case "es":
+                return 3;
+            case "ar":
+                return 4;
+            case "zh":
+                return 5;
+            default:
+                return 0;
+        }
+    }
+
+    private String getLanguageCode(int position) {
+        switch (position) {
+            case 1:
+                return "ru";
+            case 2:
+                return "de";
+            case 3:
+                return "es";
+            case 4:
+                return "ar";
+            case 5:
+                return "zh";
+            default:
+                return "en";
+        }
     }
 
     /**

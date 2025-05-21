@@ -328,6 +328,7 @@
     <string name="new_password">New Password</string>
     <string name="read_notifications_message">Show my read notifications</string>
     <string name="show_quotes_message">Show daily quotes</string>
+    <string name="select_language_prompt">Select language</string>
     <string name="required_error">Required!</string>
     <string name="password_updated">Password Updated!</string>
     <string name="status_character_limit">/100</string>

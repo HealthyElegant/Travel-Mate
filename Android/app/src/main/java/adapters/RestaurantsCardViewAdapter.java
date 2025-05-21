@@ -63,6 +63,13 @@ public class RestaurantsCardViewAdapter
                 + context.getString(R.string.approx_cost));
         holder.optionVotes.setText(currentItem.getVotes() + " "
                 + context.getString(R.string.votes));
+        holder.priceLevel.setText(context.getString(R.string.price_level,
+                String.valueOf(currentItem.getPriceLevel())));
+        if (currentItem.isHiddenGem()) {
+            holder.hiddenGemIcon.setVisibility(View.VISIBLE);
+        } else {
+            holder.hiddenGemIcon.setVisibility(View.GONE);
+        }
 
         holder.content.setOnClickListener(view -> mOnItemClickListener.onItemClick(currentItem));
     }
@@ -103,6 +110,12 @@ public class RestaurantsCardViewAdapter
 
         @BindView(R.id.avg_cost)
         TextView optionAvgCost;
+
+        @BindView(R.id.price_level)
+        TextView priceLevel;
+
+        @BindView(R.id.hidden_gem_icon)
+        ImageView hiddenGemIcon;
 
         @BindView(R.id.votes)
         TextView optionVotes;

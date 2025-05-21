@@ -209,6 +209,74 @@
 
             </android.support.v7.widget.CardView>
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/menu_content"
+                style="@style/RestaurantCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/menu_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/baseline_restaurant_menu_24"
+                    android:ellipsize="end"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_small" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/price_level_content"
+                style="@style/RestaurantCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/price_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_attach_money_black"
+                    android:ellipsize="end"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_small" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/hidden_gem_content"
+                style="@style/RestaurantCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/hidden_gem"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/baseline_favorite_24"
+                    android:ellipsize="end"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_small" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/local_tips_content"
+                style="@style/RestaurantCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/local_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_info_outline_black_24dp"
+                    android:ellipsize="end"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_small" />
+
+            </android.support.v7.widget.CardView>
+
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

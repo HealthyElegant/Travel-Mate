@@ -358,6 +358,10 @@
     <string name="has_table_booking">You can book table</string>
     <string name="cuisines">Cuisines: %s</string>
     <string name="phone_no">Phone Number: %s</string>
+    <string name="price_level">Price Level: %s</string>
+    <string name="menu">Menu: %s</string>
+    <string name="hidden_gem">Hidden Gem Spot</string>
+    <string name="local_tips">Local Tips: %s</string>
 
     <!-- Contributors string -->
     <string name="android_team">Android Team</string>

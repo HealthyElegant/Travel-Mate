@@ -98,6 +98,10 @@ public class UtilitiesFragment extends Fragment implements CardViewOptionsAdapte
                 intent = UpcomingWeekendsActivity.getStartIntent(mActivity);
                 startActivity(intent);
                 break;
+            case 6:
+                intent = ChatActivity.getStartIntent(mActivity);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -129,6 +133,10 @@ public class UtilitiesFragment extends Fragment implements CardViewOptionsAdapte
                 new CardItemEntity(
                         getActivity().getDrawable(R.drawable.upcoming_long_weekends),
                         getResources().getString(R.string.upcoming_long_weekends)));
+        cardEntities.add(
+                new CardItemEntity(
+                        getActivity().getDrawable(R.drawable.ic_chat_white),
+                        getResources().getString(R.string.title_activity_chat)));
         if (!mHasMagneticSensor) {
             cardEntities.add(
                     new CardItemEntity(

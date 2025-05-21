@@ -395,5 +395,10 @@
     <string name="date_format_hours_12">hh:mm:ss a</string>
     <string name="date_format_hours_24">k:mm:ss</string>
     <string name="toast_upload_picture_issue">Can\'t upload profile picture</string>
+    <!-- Ask Anna AI strings -->
+    <string name="title_activity_chat">Ask Anna AI</string>
+    <string name="hint_ask_something">Type your question</string>
+    <string name="action_send">Send</string>
+    <string name="action_sos">SOS</string>
 
 </resources>

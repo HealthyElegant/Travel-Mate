@@ -60,6 +60,13 @@ public class ChecklistDataSource {
         mDao.insertItem(item);
     }
 
+    /**
+     * Insert multiple items in a single transaction.
+     */
+    void insertItems(List<ChecklistItem> items) {
+        mDao.insertItems(items);
+    }
+
     void deleteItem(ChecklistItem item) {
         mDao.deleteItem(item);
     }

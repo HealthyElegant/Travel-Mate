@@ -1,5 +1,6 @@
 package utils;
 
+import io.github.project_travel_mate.BuildConfig;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +28,10 @@ public class Constants {
     public static final String API_LINK_V2 = "https://project-travel-mate.herokuapp.com/api/";
     public static final String AUTHORIZATION = "Authorization";
 
-    // TODO:: replace placeholders with actual values
-    //Cloudinary information
-    public static final String CLOUDINARY_CLOUD_NAME = "sample_cloud";
-    public static final String CLOUDINARY_API_KEY = "sample_api_key";
-    public static final String CLOUDINARY_API_SECRET = "sample_api_secret";
+    //Cloudinary information loaded from environment variables via BuildConfig
+    public static final String CLOUDINARY_CLOUD_NAME = BuildConfig.CLOUDINARY_CLOUD_NAME;
+    public static final String CLOUDINARY_API_KEY = BuildConfig.CLOUDINARY_API_KEY;
+    public static final String CLOUDINARY_API_SECRET = BuildConfig.CLOUDINARY_API_SECRET;
 
 
     public static final List<String> BASE_TASKS = new ArrayList<String>() {

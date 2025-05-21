@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travel Mate Onboarding Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    form div { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Travel Mate</h1>
+  <form id="quizForm">
+    <div>
+      <label for="travelStyle">Travel Style:</label>
+      <select id="travelStyle" name="travelStyle">
+        <option value="relaxation">Relaxation</option>
+        <option value="culture">Culture</option>
+        <option value="food">Food</option>
+        <option value="adventure">Adventure</option>
+      </select>
+    </div>
+    <div>
+      <label for="budget">Budget (USD):</label>
+      <input type="number" id="budget" name="budget" required />
+    </div>
+    <div>
+      <label for="partySize">Party Size:</label>
+      <input type="number" id="partySize" name="partySize" min="1" required />
+    </div>
+    <div>
+      <label>Interests:</label>
+      <label><input type="checkbox" name="interests" value="food" /> Food</label>
+      <label><input type="checkbox" name="interests" value="wellness" /> Wellness</label>
+      <label><input type="checkbox" name="interests" value="hidden_gems" /> Hidden Gems</label>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+  document.getElementById('quizForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+      travelStyle: form.travelStyle.value,
+      budget: form.budget.value,
+      partySize: form.partySize.value,
+      interests: Array.from(form.querySelectorAll('input[name="interests"]:checked')).map(i => i.value)
+    };
+    const res = await fetch('/api/quiz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    document.getElementById('result').innerText = 'Recommendations: ' + result.recommendations.join(', ');
+  });
+  </script>
+</body>
+</html>

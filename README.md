@@ -36,6 +36,7 @@ Travel Mate helps decide the destination by providing tourist spots, interesting
 
 ### My Trips
 Travel Mate allows users to store their travel history. They can add their Travel Mate friends to trip and share their history with others. They always have option to keep their trips private.
+Users can create Trip Diaries with photos and reviews and export them as PDF.
 
 | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/travel.png" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/shopping.png" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/mytrip_info.png" width="200px"> |
 | - | - | - |

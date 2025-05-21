@@ -52,6 +52,11 @@ Travel Mate gives a bunch of helpful utilities in one app including World Clock,
 | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/world_clock.jpeg" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/share_my_contact.png" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/checklist.png" width="200px"> |
 | - | - | - |
 
+### Premium Plans
+Unlock extra travel tools with a subscription. **Basic** users enjoy standard
+features, **Pro** users gain itinerary generation and chat support, while
+**Concierge** members get personalised hidden gem recommendations.
+
 ### Contributing
 Check out the [Getting Started](GETTING_STARTED.md) page to add an awesome new feature or bash some bugs. If you're new to open-source, we recommend you to checkout our [Contributing Guidelines](CONTRIBUTING.md). 
 

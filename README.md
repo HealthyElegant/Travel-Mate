@@ -53,6 +53,9 @@ Travel Mate gives a bunch of helpful utilities in one app including World Clock,
 | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/world_clock.jpeg" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/share_my_contact.png" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/checklist.png" width="200px"> |
 | - | - | - |
 
+### Smart Itinerary Builder
+Create 3, 5 or 7 day plans automatically and drag items to reorder. Itineraries are stored per user profile in the demo web app.
+
 ### Premium Plans
 Unlock extra travel tools with a subscription. **Basic** users enjoy standard
 features, **Pro** users gain itinerary generation and chat support, while
@@ -75,6 +78,18 @@ python3 api/destination_matcher_api.py
 Send a POST request to `/recommendations` with JSON data containing
 `preferences` and `mood`. The API returns matching destinations, related
 activities and highlights hidden gems.
+
+### Web App Itinerary API
+
+The demo web app exposes endpoints to generate and save itineraries:
+
+```
+POST /api/itinerary/generate  { userId, days }
+POST /api/itinerary/save      { userId, itinerary }
+GET  /api/itinerary/:userId
+```
+
+Open `http://localhost:3000/itinerary.html` after running `npm start` to try the drag-and-drop itinerary builder.
 
 ## Stargazers over time
 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Itinerary Builder</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    li { list-style: none; padding: 8px; border: 1px solid #ccc; margin-bottom: 4px; cursor: move; }
+  </style>
+</head>
+<body>
+  <h1>Smart Itinerary Builder</h1>
+  <div>
+    <label>User ID: <input type="text" id="userId" /></label>
+    <label>Days:
+      <select id="days">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="7">7</option>
+      </select>
+    </label>
+    <button id="generate">Generate</button>
+    <button id="save">Save</button>
+  </div>
+  <div id="itinerary"></div>
+  <script>
+    function renderItinerary(items) {
+      const container = document.getElementById('itinerary');
+      container.innerHTML = '';
+      items.forEach(day => {
+        const title = document.createElement('h3');
+        title.textContent = `Day ${day.day}`;
+        const ul = document.createElement('ul');
+        ul.dataset.day = day.day;
+        day.activities.forEach(act => {
+          const li = document.createElement('li');
+          li.textContent = act;
+          li.draggable = true;
+          li.addEventListener('dragstart', e => {
+            e.target.classList.add('dragging');
+          });
+          li.addEventListener('dragend', e => {
+            e.target.classList.remove('dragging');
+          });
+          ul.appendChild(li);
+        });
+        ul.addEventListener('dragover', e => e.preventDefault());
+        ul.addEventListener('drop', e => {
+          e.preventDefault();
+          const dragged = document.querySelector('.dragging');
+          if (dragged && dragged.parentNode === ul) {
+            ul.insertBefore(dragged, e.target.nextSibling);
+          }
+        });
+        container.appendChild(title);
+        container.appendChild(ul);
+      });
+    }
+
+    document.addEventListener('dragstart', e => {
+      if (e.target.tagName === 'LI') e.target.classList.add('dragging');
+    });
+    document.addEventListener('dragend', e => {
+      if (e.target.tagName === 'LI') e.target.classList.remove('dragging');
+    });
+
+    document.getElementById('generate').onclick = async () => {
+      const userId = document.getElementById('userId').value;
+      const days = document.getElementById('days').value;
+      const res = await fetch('/api/itinerary/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, days })
+      });
+      const data = await res.json();
+      window.currentItinerary = data.itinerary;
+      renderItinerary(window.currentItinerary);
+    };
+
+    document.getElementById('save').onclick = async () => {
+      const userId = document.getElementById('userId').value;
+      if (!userId || !window.currentItinerary) return;
+      // gather reordered activities
+      const container = document.getElementById('itinerary');
+      const days = [];
+      let currentDay = null;
+      Array.from(container.children).forEach(el => {
+        if (el.tagName === 'H3') {
+          if (currentDay) days.push(currentDay);
+          currentDay = { day: parseInt(el.textContent.replace('Day ', ''), 10), activities: [] };
+        } else if (el.tagName === 'UL' && currentDay) {
+          el.querySelectorAll('li').forEach(li => currentDay.activities.push(li.textContent));
+        }
+      });
+      if (currentDay) days.push(currentDay);
+      window.currentItinerary = days;
+      await fetch('/api/itinerary/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, itinerary: days })
+      });
+      alert('Itinerary saved');
+    };
+  </script>
+</body>
+</html>

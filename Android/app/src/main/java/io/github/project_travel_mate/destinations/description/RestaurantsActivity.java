@@ -236,10 +236,12 @@ public class RestaurantsActivity extends AppCompatActivity implements Restaurant
                             int votes = object.getInt("votes");
                             String restaurantURL = object.getString("restaurant_url");
                             int avgCost = object.getInt("avg_cost_2");
+                            int priceLevel = object.optInt("price_level", 0);
+                            boolean hiddenGem = object.optBoolean("hidden_gem", false);
 
                             restaurantItemEntities.add(
                                     new RestaurantItemEntity(id, imageUrl, name, address, ratings,
-                                            votes, avgCost, restaurantURL));
+                                            votes, avgCost, restaurantURL, priceLevel, hiddenGem));
                         }
 
                         animationView.setVisibility(View.GONE);

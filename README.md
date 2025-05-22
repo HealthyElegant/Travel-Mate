@@ -36,6 +36,7 @@ Travel Mate helps decide the destination by providing tourist spots, interesting
 
 ### My Trips
 Travel Mate allows users to store their travel history. They can add their Travel Mate friends to trip and share their history with others. They always have option to keep their trips private.
+Users can create Trip Diaries with photos and reviews and export them as PDF.
 
 | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/travel.png" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/shopping.png" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/mytrip_info.png" width="200px"> |
 | - | - | - |
@@ -52,11 +53,28 @@ Travel Mate gives a bunch of helpful utilities in one app including World Clock,
 | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/world_clock.jpeg" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/share_my_contact.png" width="200px"> | <img src="https://raw.githubusercontent.com/project-travel-mate/Travel-Mate/master/.github/screenshots/checklist.png" width="200px"> |
 | - | - | - |
 
+### Premium Plans
+Unlock extra travel tools with a subscription. **Basic** users enjoy standard
+features, **Pro** users gain itinerary generation and chat support, while
+**Concierge** members get personalised hidden gem recommendations.
+
 ### Contributing
 Check out the [Getting Started](GETTING_STARTED.md) page to add an awesome new feature or bash some bugs. If you're new to open-source, we recommend you to checkout our [Contributing Guidelines](CONTRIBUTING.md). 
 
-Feel free to fork the project and send us a pull request or even open a [new issue](https://github.com/project-travel-mate/Travel-Mate/issues/new) to start discussion. 
+Feel free to fork the project and send us a pull request or even open a [new issue](https://github.com/project-travel-mate/Travel-Mate/issues/new) to start discussion.
 
+## Recommendation API
+
+This repository also provides a simple demo API that recommends destinations
+and activities based on a user's mood and interests. Run it locally:
+
+```bash
+python3 api/destination_matcher_api.py
+```
+
+Send a POST request to `/recommendations` with JSON data containing
+`preferences` and `mood`. The API returns matching destinations, related
+activities and highlights hidden gems.
 
 ## Stargazers over time
 

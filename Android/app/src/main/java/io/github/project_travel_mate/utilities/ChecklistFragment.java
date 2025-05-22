@@ -36,6 +36,7 @@ import io.github.project_travel_mate.R;
 import io.github.project_travel_mate.roompersistence.ChecklistViewModel;
 import io.github.project_travel_mate.roompersistence.Injection;
 import io.github.project_travel_mate.roompersistence.ViewModelFactory;
+import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -260,7 +261,7 @@ public class ChecklistFragment extends Fragment implements TravelmateSnackbars,
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe());
-        // Also remove from the widget DB
+        // delete completed tasks from the widget database as well
         mDatabase.widgetCheckListDao().deleteCompletedTasks();
         //creates a snackbar with undo option
         TravelmateSnackbars.createSnackBar(mActivity.findViewById(R.id.checklist_root_layout),
@@ -268,12 +269,18 @@ public class ChecklistFragment extends Fragment implements TravelmateSnackbars,
                 Snackbar.LENGTH_LONG)
                 .setAction(R.string.undo, v -> {
                     if (!mItems.isEmpty()) {
-                        mDisposable.add(mViewModel.insertItems(mItems)
+                        mDisposable.add(Completable.fromAction(() -> {
+                            for (ChecklistItem item : mItems) {
+                                mViewModel.insertItem(item).blockingAwait();
+                            }
+                        })
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe());
                         mDatabase.widgetCheckListDao().insertAll(mItems);
                     }
+                })
+                .show();
 
                     if (mItems.size() > 0) mActionDeleteMenuItem.setVisible(true);
                 })

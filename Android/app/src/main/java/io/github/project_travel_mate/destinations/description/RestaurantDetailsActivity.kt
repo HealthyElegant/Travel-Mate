@@ -11,6 +11,7 @@ import io.github.project_travel_mate.R
 import io.github.project_travel_mate.utilities.gone
 import kotlinx.android.synthetic.main.activity_restaurant_details.*
 import objects.RestaurantDetails
+import utils.ReviewAnalyzer
 
 class RestaurantDetailsActivity : AppCompatActivity() {
 
@@ -39,6 +40,10 @@ class RestaurantDetailsActivity : AppCompatActivity() {
 
         val details = intent.getSerializableExtra(EXTRA_DETAILS) as RestaurantDetails
 
+        // Basic heuristic analysis of reviews for hidden gem and tips
+        details.hiddenGem = ReviewAnalyzer.isHiddenGem(details.reviews)
+        details.localTips = ReviewAnalyzer.extractLocalTips(details.reviews)
+
         title = details.name
 
         populateViews(details)
@@ -53,8 +58,27 @@ class RestaurantDetailsActivity : AppCompatActivity() {
         avg_cost.text = getString(R.string.avg_cost, restaurant.avgCost.toString())
         price_range.text = getString(R.string.price_range, restaurant.priceRange.toString())
         currency.text = getString(R.string.rest_currency, restaurant.currency)
+        price_level.text = getString(R.string.price_level, restaurant.priceLevel.toString())
+        if (restaurant.menu.isNotEmpty()) {
+            val menuString = restaurant.menu.joinToString { it.name + " - " + restaurant.currency + it.price }
+            menu_items.text = getString(R.string.menu, menuString)
+        } else {
+            menu_content.gone()
+        }
         user_rating.text = getString(R.string.user_rating, restaurant.rating)
         user_votes.text = getString(R.string.user_votes, restaurant.votes)
+
+        if (restaurant.hiddenGem) {
+            hidden_gem.text = getString(R.string.hidden_gem)
+        } else {
+            hidden_gem_content.gone()
+        }
+
+        if (restaurant.localTips.isNotEmpty()) {
+            local_tips.text = getString(R.string.local_tips, restaurant.localTips.joinToString("; "))
+        } else {
+            local_tips_content.gone()
+        }
 
         if (restaurant.hasTableBooking) {
             table_booking.text = getString(R.string.has_table_booking)

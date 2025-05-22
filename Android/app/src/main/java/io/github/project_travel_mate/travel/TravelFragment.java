@@ -20,6 +20,7 @@ import adapters.CardViewOptionsAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.project_travel_mate.R;
+import io.github.project_travel_mate.travel.RouteOptimizationActivity;
 import utils.CardItemEntity;
 
 
@@ -79,6 +80,10 @@ public class TravelFragment extends Fragment implements CardViewOptionsAdapter.O
                 i = MapViewRealTimeActivity.getStartIntent(mActivity);
                 startActivity(i);
                 break;
+            case 3:
+                i = RouteOptimizationActivity.getStartIntent(mActivity);
+                startActivity(i);
+                break;
         }
     }
 
@@ -96,6 +101,10 @@ public class TravelFragment extends Fragment implements CardViewOptionsAdapter.O
                 new CardItemEntity(
                         getActivity().getDrawable(R.drawable.location),
                         getResources().getString(R.string.real_time_locator)));
+        cardEntities.add(
+                new CardItemEntity(
+                        getActivity().getDrawable(R.drawable.ic_location_on_blue_24dp),
+                        getResources().getString(R.string.route_optimization)));
         return cardEntities;
     }
 }

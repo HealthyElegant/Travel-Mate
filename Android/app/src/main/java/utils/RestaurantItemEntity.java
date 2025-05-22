@@ -9,9 +9,12 @@ public class RestaurantItemEntity {
     private int mVotes;
     private String mURL;
     private int mAvgCost;
+    private int mPriceLevel;
+    private boolean mHiddenGem;
 
     public RestaurantItemEntity(String id, String imageUrl, String name, String address,
-                                float ratings, int votes, int avgCost, String restaurantURL) {
+                                float ratings, int votes, int avgCost, String restaurantURL,
+                                int priceLevel, boolean hiddenGem) {
         this.mId = id;
         this.mImageUrl = imageUrl;
         this.mRestaurantName = name;
@@ -20,6 +23,8 @@ public class RestaurantItemEntity {
         this.mVotes = votes;
         this.mAvgCost = avgCost;
         this.mURL = restaurantURL;
+        this.mPriceLevel = priceLevel;
+        this.mHiddenGem = hiddenGem;
     }
 
     public String getImage() {
@@ -45,6 +50,10 @@ public class RestaurantItemEntity {
     public int getAvgCost() {
         return mAvgCost;
     }
+
+    public int getPriceLevel() { return mPriceLevel; }
+
+    public boolean isHiddenGem() { return mHiddenGem; }
 
     public String getURL() {
         return mURL;

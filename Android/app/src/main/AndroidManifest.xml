@@ -67,6 +67,10 @@
             android:label="@string/title_activity_select_city"
             android:theme="@style/AppTheme_picker" />
         <activity
+            android:name=".utilities.ItineraryBuilderActivity"
+            android:label="@string/itinerary_builder"
+            android:theme="@style/AppTheme_picker" />
+        <activity
             android:name=".travel.ShoppingCurrentCityActivity"
             android:label="@string/title_activity_shopping_currentcity"
             android:theme="@style/AppTheme_picker" />

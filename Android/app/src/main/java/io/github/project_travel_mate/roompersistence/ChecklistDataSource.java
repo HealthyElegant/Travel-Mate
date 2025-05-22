@@ -60,6 +60,10 @@ public class ChecklistDataSource {
         mDao.insertItem(item);
     }
 
+    void insertItems(List<ChecklistItem> items) {
+        mDao.insertItems(items);
+    }
+
     void deleteItem(ChecklistItem item) {
         mDao.deleteItem(item);
     }

@@ -39,4 +39,7 @@ public interface WidgetCheckListDao {
 
     @Query("DELETE FROM events_new")
     void deleteAll();
+
+    @Query("DELETE FROM events_new WHERE isDone = 1")
+    void deleteCompletedTasks();
 }

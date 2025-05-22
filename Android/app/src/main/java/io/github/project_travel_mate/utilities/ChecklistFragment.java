@@ -260,21 +260,19 @@ public class ChecklistFragment extends Fragment implements TravelmateSnackbars,
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe());
-        // TODO make this deleteCompleted tasks
-        mDatabase.widgetCheckListDao().deleteAll();
+        // delete completed tasks from the widget database as well
+        mDatabase.widgetCheckListDao().deleteCompletedTasks();
         //creates a snackbar with undo option
         TravelmateSnackbars.createSnackBar(mActivity.findViewById(R.id.checklist_root_layout),
                 R.string.deleted_task_message,
                 Snackbar.LENGTH_LONG)
                 .setAction(R.string.undo, v -> {
-                    // TODO can replace this with a single multi-item insert statement
-                    for (int i = 0; i < mItems.size(); i++) {
-                        //adds all completed task in database again
-                        mDisposable.add(mViewModel.insertItem(mItems.get(i))
+                    if (!mItems.isEmpty()) {
+                        mDisposable.add(mViewModel.insertItems(mItems)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe());
-                        mDatabase.widgetCheckListDao().insert(mItems.get(i));
+                        mDatabase.widgetCheckListDao().insertAll(mItems);
                     }
 
                     if (mItems.size() > 0) mActionDeleteMenuItem.setVisible(true);

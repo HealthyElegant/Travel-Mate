@@ -22,6 +22,9 @@ public interface ChecklistItemDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertItem(ChecklistItem item);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertItems(List<ChecklistItem> items);
+
     @Query("SELECT * FROM events_new ORDER BY isDone")
     Flowable<List<ChecklistItem>> getSortedItems();
 

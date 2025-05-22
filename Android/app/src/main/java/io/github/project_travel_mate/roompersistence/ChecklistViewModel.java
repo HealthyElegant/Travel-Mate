@@ -65,6 +65,10 @@ public class ChecklistViewModel extends ViewModel {
         return Completable.fromAction(() -> mDataSource.insertItem(item));
     }
 
+    public Completable insertItems(List<ChecklistItem> items) {
+        return Completable.fromAction(() -> mDataSource.insertItems(items));
+    }
+
     public Completable deleteItem(ChecklistItem item) {
         return Completable.fromAction(() -> mDataSource.deleteItem(item));
     }

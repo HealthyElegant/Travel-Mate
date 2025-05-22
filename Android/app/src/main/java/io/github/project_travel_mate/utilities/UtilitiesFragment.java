@@ -98,7 +98,22 @@ public class UtilitiesFragment extends Fragment implements CardViewOptionsAdapte
                 intent = UpcomingWeekendsActivity.getStartIntent(mActivity);
                 startActivity(intent);
                 break;
+            case 6:
+                showItineraryDialog();
+                break;
         }
+    }
+
+    private void showItineraryDialog() {
+        final String[] options = {"3", "5", "7"};
+        new android.support.v7.app.AlertDialog.Builder(mActivity)
+                .setTitle(R.string.select_days)
+                .setItems(options, (dialog, which) -> {
+                    int days = Integer.parseInt(options[which]);
+                    Intent intent = ItineraryBuilderActivity.getStartIntent(mActivity, days);
+                    startActivity(intent);
+                })
+                .show();
     }
 
     private List<CardItemEntity> getUtilityItems() {
@@ -129,6 +144,10 @@ public class UtilitiesFragment extends Fragment implements CardViewOptionsAdapte
                 new CardItemEntity(
                         getActivity().getDrawable(R.drawable.upcoming_long_weekends),
                         getResources().getString(R.string.upcoming_long_weekends)));
+        cardEntities.add(
+                new CardItemEntity(
+                        getActivity().getDrawable(R.drawable.ic_event),
+                        getResources().getString(R.string.itinerary_builder)));
         if (!mHasMagneticSensor) {
             cardEntities.add(
                     new CardItemEntity(

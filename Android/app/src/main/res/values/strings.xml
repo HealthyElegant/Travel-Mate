@@ -81,6 +81,8 @@
 
     <!-- Checklist strings -->
     <string name="text_checklist">Checklist</string>
+    <string name="itinerary_builder">Itinerary Builder</string>
+    <string name="select_days">Select trip length</string>
     <string name="enter_task_name">Enter task name</string>
     <string name="menu_delete_completed">Delete ticked items</string>
     <string name="delete_tasks">Are you sure you want to delete all completed tasks?</string>

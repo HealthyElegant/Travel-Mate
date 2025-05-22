@@ -35,6 +35,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:fullBackupContent">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <activity
             android:name=".mytrips.TripImageActivity"
             android:configChanges="orientation|screenSize"
@@ -82,6 +85,10 @@
         <activity
             android:name=".travel.MapViewRealTimeActivity"
             android:label="@string/title_activity_map"
+            android:theme="@style/AppTheme_picker" />
+        <activity
+            android:name=".travel.RouteOptimizationActivity"
+            android:label="@string/route_optimization"
             android:theme="@style/AppTheme_picker" />
         <activity
             android:name=".SplashActivity"
@@ -170,6 +177,7 @@
         <activity
             android:name=".destinations.description.RestaurantDetailsActivity"
             android:theme="@style/AppThemeNoBar" />
+        <activity android:name=".tripdiary.TripDiaryActivity" />
 
         <receiver android:name="widget.CheckListWidgetProvider">
             <intent-filter>

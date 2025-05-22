@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Travel Mate</string>
+    <string name="google_maps_key">YOUR_API_KEY</string>
 
     <string name="navigation_drawer_open">Travel Guide</string>
     <string name="navigation_drawer_close">Travel Guide</string>
@@ -49,6 +50,7 @@
     <string name="hotel">HOTEL BOOKING</string>
     <string name="online_Shopping">ONLINE SHOPPING</string>
     <string name="real_time_locator">REAL TIME LOCATOR</string>
+    <string name="route_optimization">ROUTE PLANNER</string>
     <string name="fun_facts">Fun Facts</string>
     <string name="search_hint">What are you looking for…?</string>
     <string name="search_title">Cities</string>
@@ -328,6 +330,7 @@
     <string name="new_password">New Password</string>
     <string name="read_notifications_message">Show my read notifications</string>
     <string name="show_quotes_message">Show daily quotes</string>
+    <string name="select_language_prompt">Select language</string>
     <string name="required_error">Required!</string>
     <string name="password_updated">Password Updated!</string>
     <string name="status_character_limit">/100</string>
@@ -360,6 +363,10 @@
     <string name="has_table_booking">You can book table</string>
     <string name="cuisines">Cuisines: %s</string>
     <string name="phone_no">Phone Number: %s</string>
+    <string name="price_level">Price Level: %s</string>
+    <string name="menu">Menu: %s</string>
+    <string name="hidden_gem">Hidden Gem Spot</string>
+    <string name="local_tips">Local Tips: %s</string>
 
     <!-- Contributors string -->
     <string name="android_team">Android Team</string>
@@ -383,8 +390,6 @@
 
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_widget">Add World Clock Widget</string>
     <string name="configure">Select Timezone For Clock Widget</string>
     <string name="toast_no_internet_detected">We couldn\'t find an active internet connection. Please try again.</string>
@@ -392,10 +397,23 @@
 
     <!-- Image description related strings -->
     <string name="description_timezone_flag">Timezone flag</string>
+    <string name="trip_diary">Trip Diary</string>
+    <string name="add_entry">Add Entry</string>
+    <string name="export_pdf">Export PDF</string>
+    <string name="select_image">Select Image</string>
+    <string name="add_review">Add Review</string>
+    <string name="no_entries">No diary entries</string>
+    <string name="pdf_saved">PDF saved at %1$s</string>
+    <string name="error_pdf">Error creating PDF</string>
 
     <!-- Date / time formatting related strings -->
     <string name="date_format_hours_12">hh:mm:ss a</string>
     <string name="date_format_hours_24">k:mm:ss</string>
     <string name="toast_upload_picture_issue">Can\'t upload profile picture</string>
+    <!-- Ask Anna AI strings -->
+    <string name="title_activity_chat">Ask Anna AI</string>
+    <string name="hint_ask_something">Type your question</string>
+    <string name="action_send">Send</string>
+    <string name="action_sos">SOS</string>
 
 </resources>

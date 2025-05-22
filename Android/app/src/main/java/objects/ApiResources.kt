@@ -18,4 +18,9 @@ data class RestaurantDetails(@SerializedName("restaurant_id") var id: Int,
                              @SerializedName("is_delivering_now") var isDeliveringNow: Boolean,
                              @SerializedName("has_table_booking") var hasTableBooking: Boolean,
                              @SerializedName("cuisines") var cuisines: String,
-                             @SerializedName("phone_numbers") var phoneNumbers: Any): Serializable
+                             @SerializedName("phone_numbers") var phoneNumbers: Any,
+                             @SerializedName("price_level") var priceLevel: Int = 0,
+                             @SerializedName("menu") var menu: List<MenuItem> = emptyList(),
+                             @SerializedName("reviews") var reviews: List<String> = emptyList(),
+                             var hiddenGem: Boolean = false,
+                             var localTips: List<String> = emptyList()): Serializable

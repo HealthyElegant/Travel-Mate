@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Reisebegleiter</string>
+    <string name="select_language_prompt">Sprache wählen</string>
+</resources>

@@ -9,9 +9,11 @@ public class User {
     private String mImage;
     private String mDateJoined;
     private String mStatus;
+    private SubscriptionTier mSubscriptionTier = SubscriptionTier.BASIC;
 
     public User(String mUsername, String mFirstName, String mLastName,
-                int mId, String mImage, String mDateJoined, String mStatus) {
+                int mId, String mImage, String mDateJoined, String mStatus,
+                SubscriptionTier tier) {
         this.mUsername = mUsername;
         this.mFirstName = mFirstName;
         this.mLastName = mLastName;
@@ -19,6 +21,13 @@ public class User {
         this.mImage = mImage;
         this.mDateJoined = mDateJoined;
         this.mStatus = mStatus;
+        this.mSubscriptionTier = tier;
+    }
+
+    public User(String mUsername, String mFirstName, String mLastName,
+                int mId, String mImage, String mDateJoined, String mStatus) {
+        this(mUsername, mFirstName, mLastName, mId, mImage, mDateJoined, mStatus,
+                SubscriptionTier.BASIC);
     }
 
     public User(String firstName, String image) {
@@ -52,5 +61,13 @@ public class User {
 
     public String getStatus() {
         return mStatus;
+    }
+
+    public SubscriptionTier getSubscriptionTier() {
+        return mSubscriptionTier;
+    }
+
+    public void setSubscriptionTier(SubscriptionTier tier) {
+        this.mSubscriptionTier = tier;
     }
 }
